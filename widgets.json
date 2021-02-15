@@ -1,0 +1,12 @@
+{
+  "name": "monointern",
+  "dependencies": {
+    "version": "2.1.0",
+    "file": "https://cdn.uat-seeyond.minotore.com/widgets-assets/bridge/js/v2.1.0/widget-dependencies.min.js"
+  },
+  "bridge": {
+    "version": "2.1.0",
+    "file": "https://cdn.uat-seeyond.minotore.com/widgets-assets/bridge/js/v2.1.0/bridgewidget.js"
+  },
+  "widgets": {}
+}
