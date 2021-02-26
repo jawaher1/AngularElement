@@ -27,7 +27,7 @@
     "schematic:build": "tsc -p tools/tsconfig.tools.json",
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "help": "./node_modules/.bin/nx help",
-    "init:registries": "npm config set registry http://registry.npmjs.org && npm login --scope=@minotoreproject --registry=http://10.10.4.182:4873/",
+    "init:registries": "npm config set registry http://registry.npmjs.org && npm login --scope=@minotoreproject --registry=http://10.10.4.182:4873/ && npm config set @minotore http://10.10.4.182:4873/",
     "wx:build": "ng build --prod --extraWebpackConfig ../../webpack.extra.js --output-hashing none --single-bundle true",
     "wx:create": "node ./node_modules/@minotore/wx/cli/create",
     "wx:help": "node ./node_modules/@minotore/wx/cli/help",
