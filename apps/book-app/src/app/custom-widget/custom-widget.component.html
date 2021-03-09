@@ -1,0 +1,106 @@
+<!--        
+    Minotore widget component
+    this component provides this component with the widget config instance 
+-->
+<minotore-widget
+  identifier="{{ widgetConfigId }}"
+  selector="{{ widgetSelector }}"
+></minotore-widget>
+
+
+
+<!-- This is for intro and test purposes, remove in production-->
+
+<div class="container-fluid">
+  <div class="jumbotron text-center">
+    <div class="form-group">
+      <form [formGroup]="LibForm" >
+        <ejs-dropdownlist [(ngModel)]="selectedDevice" [dataSource]='LibOptions' formControlName="library" (change)="onChange($event)" [placeholder]='placeholder' ></ejs-dropdownlist>`
+      </form>
+    </div>
+    <h6>What we offer:</h6>
+    <div id="all">
+      <!-- Nav tabs -->
+      <br />
+      <br />
+      
+      <mat-tab-group  mat-align-tabs="center">
+ 
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <h5> Novels </h5>
+            </ng-template>
+            <div class="container">
+                <span>Library: {{libraryName}} - List of Novels</span>
+                <table class="table table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Author</th>
+                            <th>Category</th>
+                    
+                            <th>Price</th>
+                            <th>Story Summary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let book of books">
+                            <tr *ngIf="book.StorySummary!=null">
+                                <td><span>{{book.id}}</span></td>
+                                <td><span>{{book.title}}</span></td>
+                                <td><span>{{book.author.nameo}}</span></td>
+                                <td><span>{{book.categories}}</span></td>
+                                
+                                <td><span>{{book.price}}$</span></td>
+                                <td><span>{{book.StorySummary}}</span></td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+        </mat-tab>
+       
+       <mat-tab>
+        <ng-template mat-tab-label>
+            <h5> Magazines </h5>
+        </ng-template>
+        <div class="container">
+            <span>Library: {{libraryName}} - List of Magazines</span>
+            <table class="table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th >ID</th>
+                        <th>Name</th>
+                        <th>Author</th>
+                        <th>Category</th>
+                
+                        <th>Price</th>
+                        <th>Next Release Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let book of books">
+                        <tr *ngIf="book.NextReleaseDate!=null">
+                            <td><span>{{book.id}}</span></td>
+                            <td><span>{{book.title}}</span></td>
+                            <td><span>{{book.author.name}}</span></td>
+                            <td><span>{{book.categories}}</span></td>
+                            
+                            <td><span>{{book.price}}$</span></td>
+                            <td><span>{{book.NextReleaseDate }}</span></td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </mat-tab>
+    </mat-tab-group>
+                   
+  
+  
+
+</div>
+</div>
+</div>
+

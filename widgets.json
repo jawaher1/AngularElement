@@ -8,5 +8,15 @@
     "version": "2.1.0",
     "file": "https://cdn.uat-seeyond.minotore.com/widgets-assets/bridge/js/v2.1.0/bridgewidget.js"
   },
-  "widgets": {}
+  "widgets": {
+    "book-app": {
+      "version": "0.0.1",
+      "source": {
+        "root": "apps/book-app",
+        "src": "apps/book-app/src",
+        "element": "elements/book-app"
+      },
+      "mwidget": true
+    }
+  }
 }

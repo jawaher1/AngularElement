@@ -2,7 +2,128 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "",
-  "projects": {},
+  "projects": {
+    "book-app": {
+      "root": "apps/book-app/",
+      "sourceRoot": "apps/book-app/src",
+      "projectType": "application",
+      "prefix": "lyxormicrosite",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:build",
+          "options": {
+            "outputPath": "dist/apps/book-app",
+            "index": "apps/book-app/src/index.html",
+            "main": "apps/book-app/src/main.ts",
+            "polyfills": "apps/book-app/src/polyfills.ts",
+            "tsConfig": "apps/book-app/tsconfig.app.json",
+            "assets": [
+              "apps/book-app/src/favicon.ico",
+              "apps/book-app/src/assets"
+            ],
+            "styles": [
+              "apps/book-app/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/book-app/src/environments/environment.ts",
+                  "with": "apps/book-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "book-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "book-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "book-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/book-app/tsconfig.app.json",
+              "apps/book-app/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/book-app/jest.config.js",
+            "tsConfig": "apps/book-app/tsconfig.spec.json",
+            "setupFile": "apps/book-app/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "book-app-e2e": {
+      "root": "apps/book-app-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/book-app-e2e/cypress.json",
+            "tsConfig": "apps/book-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "book-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "book-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/book-app-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "warnings": {
       "typescriptMismatch": false,
