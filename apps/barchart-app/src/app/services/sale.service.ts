@@ -7,21 +7,23 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class LibraryService {
+export class SaleService {
   httpOptions = {
     headers: new HttpHeaders(
     { 
       'Access-Control-Allow-Origin':'*',
        'Content-Type': 'application/json'
     })}
-  
-    
+ 
+    private baseUrl = `${environment.host}:${environment.port}`
 
   constructor(private http: HttpClient) { }
 
-  getLibraries(): Observable<any> {
-    return this.http.get(`${URLSConfigs.BASE_URL}/${URLSConfigs.GET_LIBRARIES}`,this.httpOptions);
+  getSales(): Observable<any> {
+    return this.http.get(`${this.baseUrl}`,this.httpOptions);
   }
 
-
+   getSalesbyLibrary(name:string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${URLSConfigs.GET_SALES}/${name}?name=${name}`,this.httpOptions);
+}
 }

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { URLSConfigs } from '../config/urls.config';
 
 
 @Injectable({
@@ -13,17 +14,15 @@ export class BookService {
       'Access-Control-Allow-Origin':'*',
        'Content-Type': 'application/json'
     })}
-  private baseUrl = 'http://localhost:3000/library';
-  private baseUrl2 = 'http://localhost:3000/book';
-    //private baseUrl = ` ${environment.host}:${environment.port}${environment.prefix}`
+
 
   constructor(private http: HttpClient) { }
 
   getBooks(): Observable<any> {
-    return this.http.get(`${this.baseUrl2}`,this.httpOptions);
+    return this.http.get(`${URLSConfigs.BASE_URL}/${URLSConfigs.GET_BOOKS}`,this.httpOptions);
   }
 
    getBooksbyLibrary(name:string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${name}`,this.httpOptions);
+    return this.http.get(`${URLSConfigs.BASE_URL}/${URLSConfigs.GET_LIBRARIES}/${name}`,this.httpOptions);
 }
 }

@@ -14,13 +14,12 @@ export class LibraryService {
       'Access-Control-Allow-Origin':'*',
        'Content-Type': 'application/json'
     })}
-  
-    
+    private baseUrl = `${environment.host}:${environment.port2}`
 
   constructor(private http: HttpClient) { }
 
   getLibraries(): Observable<any> {
-    return this.http.get(`${URLSConfigs.BASE_URL}/${URLSConfigs.GET_LIBRARIES}`,this.httpOptions);
+    return this.http.get(`${this.baseUrl}/${URLSConfigs.GET_LIBRARIES}/${name}`,this.httpOptions);
   }
 
 

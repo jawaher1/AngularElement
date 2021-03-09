@@ -122,6 +122,126 @@
           }
         }
       }
+    },
+    "barchart-app": {
+      "root": "apps/barchart-app/",
+      "sourceRoot": "apps/barchart-app/src",
+      "projectType": "application",
+      "prefix": "lyxormicrosite",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:build",
+          "options": {
+            "outputPath": "dist/apps/barchart-app",
+            "index": "apps/barchart-app/src/index.html",
+            "main": "apps/barchart-app/src/main.ts",
+            "polyfills": "apps/barchart-app/src/polyfills.ts",
+            "tsConfig": "apps/barchart-app/tsconfig.app.json",
+            "assets": [
+              "apps/barchart-app/src/favicon.ico",
+              "apps/barchart-app/src/assets"
+            ],
+            "styles": [
+              "apps/barchart-app/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/barchart-app/src/environments/environment.ts",
+                  "with": "apps/barchart-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "book-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "book-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "book-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/barchart-app/tsconfig.app.json",
+              "apps/barchart-app/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/barchart-app/jest.config.js",
+            "tsConfig": "apps/barchart-app/tsconfig.spec.json",
+            "setupFile": "apps/barchart-app/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "barchart-app-e2e": {
+      "root": "apps/barchart-app-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/barchart-app-e2e/cypress.json",
+            "tsConfig": "apps/barchart-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "barchart-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "barchart-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/barchart-app-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

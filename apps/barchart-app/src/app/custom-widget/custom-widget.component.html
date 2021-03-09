@@ -1,0 +1,28 @@
+<!--        
+    Minotore widget component
+    this component provides this component with the widget config instance 
+-->
+<minotore-widget identifier="{{ widgetConfigId }}" selector="{{ widgetSelector }}"></minotore-widget>
+
+
+
+<!-- This is for intro and test purposes, remove in production-->
+<div class="container-fluid">
+  <div class="jumbotron text-center">
+    <h4 style="text-align:center ; color: rgba(77,20,96,1)"> Book Sales Statistics
+      <br /><br />
+
+
+    </h4><br />
+    <div>
+      <div style="display: block; height: 1000px; width : 1000px;  margin-left: auto;
+  margin-right: auto; ">
+        <canvas baseChart [datasets]="barChartData" [labels]="mbarChartLabels" [options]="barChartOptions"
+          [colors]="barChartColors" [legend]="barChartLegend" [chartType]="barChartType">
+        </canvas>
+      </div>
+
+
+    </div>
+  </div>
+</div>

@@ -13,6 +13,12 @@
     },
     "book-app-e2e": {
       "tags": []
+    },
+    "barchart-app": {
+      "tags": []
+    },
+    "barchart-app-e2e": {
+      "tags": []
     }
   }
 }

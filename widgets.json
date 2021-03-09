@@ -17,6 +17,15 @@
         "element": "elements/book-app"
       },
       "mwidget": true
+    },
+    "barchart-app": {
+      "version": "0.0.1",
+      "source": {
+        "root": "apps/barchart-app",
+        "src": "apps/barchart-app/src",
+        "element": "elements/barchart-app"
+      },
+      "mwidget": true
     }
   }
 }
